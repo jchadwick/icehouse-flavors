@@ -5,7 +5,7 @@ import {
   hasFlavorAvailable as hasFlavorAvailable,
 } from "./lib/flavorsService";
 import toSsmlList from "./lib/toSSmlList";
-import { IceHouseLocation, IceHouseLocations } from "./model";
+import { Flavor, IceHouseLocation, IceHouseLocations } from "./model";
 
 const SKILL_NAME = "Yardley Ice House Flavors";
 
@@ -23,16 +23,30 @@ const TodaysFlavorsHandler: Alexa.RequestHandler = {
     const location = getLocation(handlerInput);
     const locationName = IceHouseLocations[location];
     const flavors = await getFlavorsByLocation(location);
-    const flavorNames = flavors.map((f) => f.name).filter(Boolean) as string[];
+
+    const flavorsByType = flavors.reduce(
+      (acc, flavor) => ({
+        ...acc,
+        [flavor.type]: [
+          ...(acc[flavor.type] || []),
+          flavor.name || flavor.flavor,
+        ],
+      }),
+      {} as { [key: string]: string[] }
+    );
 
     return handlerInput.responseBuilder
       .withSimpleCard(
         `Today's ${locationName} Flavors`,
-        flavorNames.join("\r\n")
+        flavorsByType["ice"].join("\r\n") +
+          "\r\n\r\n" +
+          flavorsByType["cream"].join("\r\n")
       )
       .speak(
-        `Today's ${locationName} flavors are: <break strength='medium' />` +
-          toSsmlList(flavorNames)
+        `Today's ${locationName} water ice flavors are: <break strength='medium' />` +
+          toSsmlList(flavorsByType["ice"]) +
+          `<break strength='strong' /> The soft serve flavors are: <break strength='medium' />` +
+          toSsmlList(flavorsByType["cream"])
       )
       .getResponse();
   },

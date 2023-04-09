@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "run-s clean build:*",
-    "build:compile": "tsc -p .",
+    "build:compile": "esbuild ./src/index.ts --bundle --minify --sourcemap --platform=node --target=node16.14 --outdir=./dist",
     "build:interaction-model": "mkdir -p dist/interactionModels/custom && ./scripts/buildInteractionModel.ts > skillMetadata/interactionModels/custom/en-US.json",
     "build:copy-files": "copyup ./assets/** ./dist",
     "clean": "rimraf dist",
@@ -32,6 +32,7 @@
     "@types/node": "^18.15.11",
     "ask-sdk-local-debug": "^1.1.0",
     "copyfiles": "^2.4.1",
+    "esbuild": "^0.17.15",
     "npm-run-all": "^4.1.5",
     "rimraf": "^4.4.1",
     "typescript": "^5.0.4"

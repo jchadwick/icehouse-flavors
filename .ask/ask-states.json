@@ -9,8 +9,8 @@
             "default": {
               "lambda": {
                 "arn": "arn:aws:lambda:us-east-1:052029038762:function:ask-icehouse-default-default-1681002644818",
-                "lastModified": "2023-04-09T21:47:49.000+0000",
-                "revisionId": "70d9bd4b-44c3-4bbd-9e4f-b9a7d18e38ea"
+                "lastModified": "2023-04-09T23:47:40.000+0000",
+                "revisionId": "935faf62-5eef-4e56-913e-4352ec021e1a"
               },
               "iamRole": "arn:aws:iam::052029038762:role/ask-lambda-icehouse-1681002644489"
             }
@@ -18,12 +18,12 @@
         }
       },
       "skillMetadata": {
-        "lastDeployHash": "qB+VnpzZKIE7O9c9k2KvXR+tqlE=",
+        "lastDeployHash": "PAEU4Anw9J7UwBP9yBmK6t0l174=",
         "lastDeployType": "interaction-model"
       },
       "code": {
         "default": {
-          "lastDeployHash": "MUlcBOyDQyIlTL/EI3rfgfkiFHE="
+          "lastDeployHash": "1jVVPOEQD7gNJoFYpgullyEIMMA="
         }
       }
     }

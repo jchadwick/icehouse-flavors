@@ -14,8 +14,8 @@
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "Sample Testing Instructions.",
-      "category": "KNOWLEDGE_AND_TRIVIA",
+      "testingInstructions": "Tell Alexa to 'ask Ice House what their flavors are today'",
+      "category": "DELIVERY_AND_TAKEOUT",
       "distributionCountries": []
     },
     "apis": {
