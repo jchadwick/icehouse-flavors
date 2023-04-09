@@ -1,0 +1,30 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Yardley Ice House Flavors",
+          "examplePhrases": [
+            "Alexa open Yardley Ice House",
+            "ice house",
+            "yardley ice house"
+          ],
+          "name": "ice_house",
+          "description": "Yardley Ice House Flavors"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "KNOWLEDGE_AND_TRIVIA",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:052029038762:function:ask-icehouse-default-default-1681002644818"
+        }
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

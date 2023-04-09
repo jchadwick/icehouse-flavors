@@ -1,0 +1,30 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Debug skill",
+      "configurations": ["Launch ASK debugger", "Launch ASK Dialog"]
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Launch ASK debugger",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "node ./node_modules/ask-sdk-local-debug/dist/LocalDebuggerInvoker.js --accessToken ${ASK_ACCESS_TOKEN} --skillId ${SKILL_ID} --handlerName handler --skillEntryFile ${workspaceFolder}/dist/index.js",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env.launch.local",
+      "preLaunchTask": "build-and-set-env"
+    },
+    {
+      "name": "Launch ASK Dialog",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "ask dialog",
+      "cwd": "${workspaceFolder}/skill"
+    }
+  ]
+}

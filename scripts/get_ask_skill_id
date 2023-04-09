@@ -1,0 +1,22 @@
+#!/bin/bash
+# author: Joe Benjamin
+# uses the ask cli to search for a skill and get back the skillId
+# uses jq to parse the json returned from the ask smapi list-skills-for-vendor call
+# must pass in name of skill
+# must configure ask cli for this to work
+# The ask configure command helps you configure the credentials that ASK CLI uses to authenticate you to Amazon developer services and Amazon Web Services (AWS)
+
+# NOTE: 
+# - must configure ask cli for this to work
+# - must have [jq](https://stedolan.github.io/jq/download/) installed
+# - uses the ask cli and jq ( to get back the skill id from the skill_name passed in
+
+skill_name=$1
+[[ -z "$skill_name" ]] && echo "missing param skill name" && exit 1
+
+skill_id=\
+$(ask smapi list-skills-for-vendor | \
+  jq --arg skill_name "$1" \
+  '.skills[] | select(.nameByLocale["en-US"] == $skill_name) | .skillId')
+
+[[ -z "$skill_id" ]] && echo "not found" || echo $skill_id

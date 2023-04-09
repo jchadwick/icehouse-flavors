@@ -1,0 +1,25 @@
+#!/bin/bash
+# author: Joe Benjamin
+
+# NOTE:
+# - must configure ask cli for this to work
+# - this will be used whenever you need to update/set your access token to a valid one
+# - uses the ask cli to generate a token
+# - saves the token in your .zshrc file (if using .bashrc, change .zshrc to .bashrc)
+# - this assumes you already have a line in your .zshrc file in the format `export ASK_ACCESS_TOKEN="some_random_token"`
+
+# uses the ask cli to generate a token to be used with the ask-sdk-local-debug package
+# saves the token in your .zshrc file, this assume you already have a line like below
+# script assumes you have the line like - export ASK_ACCESS_TOKEN="something"
+# the line is what the script uses to replace the value each time it gets a new token
+# must configure ask cli for this to work
+# The ask configure command helps you configure the credentials that ASK CLI uses to authenticate you to Amazon developer services and Amazon Web Services (AWS)
+
+TOKEN=$(ask util generate-lwa-tokens --scopes alexa::ask:skills:debug | sed -E -n 's/.*\"access_token\": \"([^\"]+)\".*/\1/p')
+
+if [[ $(uname) == 'Darwin' ]]; then
+    sed -E -i '' "s/(ASK_ACCESS_TOKEN)=\"[^\"]+\"/\1=\"$TOKEN\"/" ~/.zshrc
+else
+    sed -E -i "s/(ASK_ACCESS_TOKEN)=\"[^\"]+\"/\1=\"$TOKEN\"/" ~/.zshrc
+fi
+

@@ -1,0 +1,58 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "ice house",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HasFlavor",
+          "slots": [
+            {
+              "name": "flavor",
+              "type": "AMAZON.Dessert"
+            }
+          ],
+          "samples": [
+            "if there is {flavor}",
+            "if they have {flavor}",
+            "if they have {flavor} today",
+            "if they have {flavor} tonight"
+          ]
+        },
+        {
+          "name": "TodaysFlavors",
+          "slots": [],
+          "samples": [
+            "their flavors",
+            "their flavors today",
+            "their flavors tonight",
+            "what flavors there are",
+            "what flavors there are today",
+            "what flavors there are tonight",
+            "what flavors they have",
+            "what flavors they have tonight",
+            "what flavors they have today",
+            "what their flavors are today",
+            "what their flavors are tonight"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        }
+      ],
+      "types": []
+    }
+  }
+}

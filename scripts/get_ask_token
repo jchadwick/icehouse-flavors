@@ -1,0 +1,9 @@
+#!/bin/bash
+# author: Joe Benjamin
+# gets the ASK_ACCESS_TOKEN from the ~/.zshrc file, if in bashrc or any other, will need to update the path
+# NOTE:
+# - this will be used inside of vimspector to grab the token needed to debug
+# - gets the access token from your .zshrc file (if using .bashrc, change .zshrc to .bashrc)
+# - uses sed to find the token in your .zshrc file in the format `export ASK_ACCESS_TOKEN="some_random_token"`
+
+sed -r -n 's/.*ASK_ACCESS_TOKEN="(.*)"/\1/p' ~/.zshrc
